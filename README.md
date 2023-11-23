@@ -6,7 +6,7 @@
 News is a cutting-edge Android application designed to bring you curated, outlinked news articles effortlessly. Utilizing the latest in technology, design, and user experience principles, this News App provides a seamless interface for users to access and engage with the most informative articles.
 
 
-### Functionality Added to the Application:
+## ✅ Functionality Added to the Application:
 
 - **News Article Fetching**: Implemented API integration to fetch news articles dynamically.
 - **Article Display**: Showcased article headlines and URLs for easy access.
