@@ -1,4 +1,3 @@
-
 package com.MoEngage.news.ui.activities
 
 import android.annotation.SuppressLint
@@ -23,16 +22,17 @@ import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions
 import com.bumptech.glide.request.RequestListener
 import com.bumptech.glide.request.RequestOptions
 import com.bumptech.glide.request.target.Target
+import com.google.android.material.snackbar.Snackbar
 
 class ArticleDetailActivity : AppCompatActivity() {
     private lateinit var gestureDetector: GestureDetector
-    private lateinit var articleURL : String
-    private lateinit var title : String
-    private lateinit var content : String
-    private lateinit var author : String
-    private lateinit var image_url : String
-    private lateinit var source : String
-    private lateinit var article : Article
+    private lateinit var articleURL: String
+    private lateinit var title: String
+    private lateinit var content: String
+    private lateinit var author: String
+    private lateinit var image_url: String
+    private lateinit var source: String
+    private lateinit var article: Article
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -46,10 +46,10 @@ class ArticleDetailActivity : AppCompatActivity() {
 
         content = intent.getStringExtra("ARTICLE_CONTENT").toString()
         title = intent.getStringExtra("ARTICLE_TITLE").toString()
-         author = intent.getStringExtra("ARTICLE_AUTHOR").toString()
-       source = intent.getStringExtra("ARTICLE_SOURCE").toString()
-     image_url = intent.getStringExtra("ARTICLE_IMAGE").toString()
-        article= intent.getParcelableExtra("ARTICLE_DATA")!!
+        author = intent.getStringExtra("ARTICLE_AUTHOR").toString()
+        source = intent.getStringExtra("ARTICLE_SOURCE").toString()
+        image_url = intent.getStringExtra("ARTICLE_IMAGE").toString()
+        article = intent.getParcelableExtra("ARTICLE_DATA")!!
 
         val content_text = findViewById<TextView>(R.id.tv_content)
         val title_text = findViewById<TextView>(R.id.tv_title)
@@ -67,9 +67,10 @@ class ArticleDetailActivity : AppCompatActivity() {
         val article = createArticleObject()
 
         // Set the appropriate image based on the article's save status
-        if (SavedNewsManager.isArticleSaved(this,article)) {
+        if (SavedNewsManager.isArticleSaved(this, article)) {
             // Load the saved icon image
             button.setImageResource(R.drawable.heart)
+
         } else {
             // Load the unsaved icon image
             button.setImageResource(R.drawable.unheart)
@@ -80,20 +81,26 @@ class ArticleDetailActivity : AppCompatActivity() {
         button.setOnClickListener {
 //            saved the news
             val article = createArticleObject()
-            if(SavedNewsManager.isArticleSaved(this,article)) {
+            if (SavedNewsManager.isArticleSaved(this, article)) {
                 SavedNewsManager.unsaveArticle(this, article)
                 button.setImageResource(R.drawable.unheart)
-            }else{
+
+            } else {
 
                 SavedNewsManager.saveArticle(this, article)
                 button.setImageResource(R.drawable.heart)
+                Snackbar.make(
+                    findViewById(android.R.id.content),
+                    "Article saved successfully",
+                    Snackbar.LENGTH_LONG
+                ).show()
             }
         }
 
 
 
 
-       image_url?.let {
+        image_url?.let {
             Glide.with(this)
                 .load(it)
                 .apply(
@@ -127,14 +134,12 @@ class ArticleDetailActivity : AppCompatActivity() {
                 .transition(DrawableTransitionOptions.withCrossFade())
                 .into(image)
         } ?: run {
-           image.setImageResource(R.drawable.breaking_news)
+            image.setImageResource(R.drawable.breaking_news)
             progressBar.visibility = View.GONE
         }
 
 
-
     }
-
 
 
     override fun onTouchEvent(event: MotionEvent): Boolean {
@@ -146,7 +151,6 @@ class ArticleDetailActivity : AppCompatActivity() {
         gestureDetector.onTouchEvent(ev!!)
         return super.dispatchTouchEvent(ev)
     }
-
 
 
     private inner class GestureListener : GestureDetector.SimpleOnGestureListener() {
@@ -170,9 +174,13 @@ class ArticleDetailActivity : AppCompatActivity() {
             return false
         }
     }
+
     private fun startActivityBWithTransition() {
-        val intent = Intent(this@ArticleDetailActivity, com.MoEngage.news.ui.activities.WebViewActivity::class.java)
-        intent.putExtra("ARTICLE_URL",articleURL)
+        val intent = Intent(
+            this@ArticleDetailActivity,
+            com.MoEngage.news.ui.activities.WebViewActivity::class.java
+        )
+        intent.putExtra("ARTICLE_URL", articleURL)
         startActivity(intent)
         overridePendingTransition(R.drawable.slide_in_up, R.drawable.slide_out_up)
     }
@@ -181,7 +189,7 @@ class ArticleDetailActivity : AppCompatActivity() {
         // Assuming you have these values available in your context
         val title = article.title
         val author = article.author
-        val content =article.content
+        val content = article.content
         val imageUrl = article.imageUrl
         val source = article.source
         val url = article.url
