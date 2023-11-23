@@ -56,7 +56,7 @@ class BreakingNews : Fragment() {
         popup = view.findViewById(R.id.cv_filter)
 
         popup.setOnClickListener {
-           showCustomDialog()
+            showCustomDialog()
         }
 
 
@@ -65,11 +65,14 @@ class BreakingNews : Fragment() {
     }
 
     private fun setupRecyclerView(view: View) {
-        articleAdapter = ArticleAdapter(requireContext(), articleList, object : ArticleAdapter.OnArticleClickListener {
-            override fun onArticleClick(article: Article) {
-                // Handle article click here
-            }
-        })
+        articleAdapter = ArticleAdapter(
+            requireContext(),
+            articleList,
+            object : ArticleAdapter.OnArticleClickListener {
+                override fun onArticleClick(article: Article) {
+                    // Handle article click here
+                }
+            })
         recyclerView = view.findViewById<RecyclerView>(R.id.recyclerView).apply {
             layoutManager = LinearLayoutManager(context)
             adapter = articleAdapter
@@ -77,7 +80,8 @@ class BreakingNews : Fragment() {
     }
 
     private fun fetchArticles() {
-        val apiUrl = "https://candidate-test-data-moengage.s3.amazonaws.com/Android/news-api-feed/staticResponse.json"
+        val apiUrl =
+            "https://candidate-test-data-moengage.s3.amazonaws.com/Android/news-api-feed/staticResponse.json"
 
         lifecycleScope.launch(Dispatchers.IO) {
             try {
@@ -155,7 +159,6 @@ class BreakingNews : Fragment() {
     }
 
 
-
     private fun showCustomDialog() {
         val dialog = Dialog(requireContext())
         dialog.setContentView(R.layout.dialog_box_filter)
@@ -177,3 +180,5 @@ class BreakingNews : Fragment() {
     }
 
 }
+
+

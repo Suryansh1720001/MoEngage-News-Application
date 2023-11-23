@@ -47,7 +47,7 @@ class OneTimeIntroActivity : AppCompatActivity(), OneTimeIntroPagerAdapter.ViewP
 
 
             skipbtn.setOnClickListener {
-                val i = Intent(this@OneTimeIntroActivity, HomeActivity::class.java)
+                val i = Intent(this@OneTimeIntroActivity, SplashScreen::class.java)
                 startActivity(i)
                 finish()
             }
@@ -69,7 +69,7 @@ class OneTimeIntroActivity : AppCompatActivity(), OneTimeIntroPagerAdapter.ViewP
 
         } else {
             // If it's not the first run, directly start the MainActivity
-            val intent = Intent(this@OneTimeIntroActivity, HomeActivity::class.java)
+            val intent = Intent(this@OneTimeIntroActivity, SplashScreen::class.java)
             startActivity(intent)
             finish()
 
@@ -87,7 +87,7 @@ class OneTimeIntroActivity : AppCompatActivity(), OneTimeIntroPagerAdapter.ViewP
         if (getItem(0) < 2)
             mSlideViewPager.setCurrentItem(getItem(1), true)
         else {
-            val i = Intent(this@OneTimeIntroActivity, HomeActivity::class.java)
+            val i = Intent(this@OneTimeIntroActivity, SplashScreen::class.java)
             startActivity(i)
             finish()
         }
