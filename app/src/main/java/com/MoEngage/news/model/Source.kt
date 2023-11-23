@@ -1,11 +1,5 @@
 package com.MoEngage.news.model
 
-//data class Source(
-//    val id: String?,
-//    val name: String?
-//)
-
-
 
 import android.os.Parcel
 import android.os.Parcelable

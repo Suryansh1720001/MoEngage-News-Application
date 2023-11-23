@@ -66,7 +66,6 @@
                     intent.putExtra("ARTICLE_AUTHOR", article.author)
                     intent.putExtra("ARTICLE_TITLE", article.title)
                     intent.putExtra("ARTICLE_SOURCE", article.source.name)
-                    // ... other intent extras
                     intent.putExtra("ARTICLE_DATA", article)
                     startActivityForResult(intent, REQUEST_CODE_REFRESH)
                 }

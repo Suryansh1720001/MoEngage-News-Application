@@ -1,6 +1,7 @@
 package com.MoEngage.news.ui.activities
 
 import android.annotation.SuppressLint
+import android.app.AlertDialog
 import android.app.Dialog
 import android.os.Bundle
 import android.util.Log
@@ -24,6 +25,7 @@ import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 import org.json.JSONException
 import org.json.JSONObject
+import java.io.IOException
 import java.net.URL
 import java.text.SimpleDateFormat
 import java.util.*
@@ -70,7 +72,6 @@ class BreakingNews : Fragment() {
             articleList,
             object : ArticleAdapter.OnArticleClickListener {
                 override fun onArticleClick(article: Article) {
-                    // Handle article click here
                 }
             })
         recyclerView = view.findViewById<RecyclerView>(R.id.recyclerView).apply {
@@ -78,6 +79,7 @@ class BreakingNews : Fragment() {
             adapter = articleAdapter
         }
     }
+
 
     private fun fetchArticles() {
         val apiUrl =
@@ -93,16 +95,20 @@ class BreakingNews : Fragment() {
                     articleAdapter.notifyDataSetChanged()
                     progress_bar.visibility = View.GONE
                 }
-            } catch (e: Exception) {
-                Log.e("FETCH_ERROR", "Error fetching articles: ${e.message}", e)
+            } catch (e: IOException) {
                 withContext(Dispatchers.Main) {
+                    // Show a system-generated dialog for network error
+                    showSystemDialog("Network Error", "Please check your internet connection.")
+                    progress_bar.visibility = View.GONE
+                }
+            } catch (e: Exception) {
+                withContext(Dispatchers.Main) {
+                    // Handle other exceptions if required
                     progress_bar.visibility = View.GONE
                 }
             }
         }
     }
-
-
 
 
     private fun parseArticles(response: String): List<Article> {
@@ -165,9 +171,7 @@ class BreakingNews : Fragment() {
     private fun showCustomDialog() {
         val dialog = Dialog(requireContext())
         dialog.setContentView(R.layout.dialog_box_filter)
-        // Set up your dialog content and functionality here
 
-        // Example: Dismiss the dialog when a button is clicked
         val cv_latest = dialog.findViewById<CardView>(R.id.cv_latest)
         val cv_oldest = dialog.findViewById<CardView>(R.id.cv_older)
         cv_latest.setOnClickListener {
@@ -179,6 +183,18 @@ class BreakingNews : Fragment() {
             dialog.dismiss()
         }
 
+        dialog.show()
+    }
+
+
+    private fun showSystemDialog(title: String, message: String) {
+        val builder = AlertDialog.Builder(requireContext())
+        builder.setTitle(title)
+            .setMessage(message)
+            .setPositiveButton("OK") { dialog, _ ->
+                dialog.dismiss()
+            }
+        val dialog = builder.create()
         dialog.show()
     }
 

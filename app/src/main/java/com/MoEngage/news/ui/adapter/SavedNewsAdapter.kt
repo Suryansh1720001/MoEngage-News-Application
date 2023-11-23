@@ -28,9 +28,9 @@ import java.text.SimpleDateFormat
 import java.util.Locale
 
 
-
-class SavedNewsAdapter(private val articles: List<Article>, private val context: Context,
-                       private val clickListener: OnArticleClickListener // Add the listener in the constructor
+class SavedNewsAdapter(
+    private val articles: List<Article>, private val context: Context,
+    private val clickListener: OnArticleClickListener // Add the listener in the constructor
 ) : RecyclerView.Adapter<SavedNewsAdapter.ViewHolder>() {
 
     inner class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
@@ -51,7 +51,8 @@ class SavedNewsAdapter(private val articles: List<Article>, private val context:
         val article = articles[position]
 
         holder.titleTextView.text = article.title ?: context.getString(R.string.title_placeholder)
-        holder.sourceTextView.text = article.source.name ?: context.getString(R.string.source_placeholder)
+        holder.sourceTextView.text =
+            article.source.name ?: context.getString(R.string.source_placeholder)
         holder.descriptionTextView.text = article.description ?: "Description"
         holder.timeTextView.text = formatDate(article.publishedAt)
 
@@ -105,7 +106,6 @@ class SavedNewsAdapter(private val articles: List<Article>, private val context:
 
     private fun formatDate(dateString: String?): String {
         return if (dateString.isNullOrEmpty()) {
-            // Handle empty or null date strings
             "No date available" // or any other default value you prefer
         } else {
             val inputFormat = SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss'Z'", Locale.getDefault())
@@ -124,8 +124,6 @@ class SavedNewsAdapter(private val articles: List<Article>, private val context:
     interface OnArticleClickListener {
         fun onArticleClick(article: Article)
     }
-
-
 
 
 }

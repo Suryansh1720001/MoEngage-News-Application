@@ -17,11 +17,9 @@ class WebViewActivity : AppCompatActivity() {
         setContentView(R.layout.activity_web_view)
 
         val articleUrl = intent.getStringExtra("ARTICLE_URL")
-        Toast.makeText(this@WebViewActivity,"$articleUrl",Toast.LENGTH_LONG).show()
         val correctedUrl = articleUrl?.replace("http:", "https:") ?: "https://www.example.com"
 
         val progressBar = findViewById<ProgressBar>(R.id.progress_bar)
-
 
 
         val webView = findViewById<WebView>(R.id.webView)
@@ -34,16 +32,17 @@ class WebViewActivity : AppCompatActivity() {
         webView.clearCache(true)
 
 
-
         val webViewClient = object : WebViewClient() {
             override fun onPageFinished(view: WebView?, url: String?) {
                 super.onPageFinished(view, url)
                 view?.settings?.loadWithOverviewMode = true
                 view?.settings?.useWideViewPort = true
 //                view?.settings?.setInitialScale(1)
-                view?.loadUrl("javascript:(function() { " +
-                        "document.body.style.zoom = 1;" +
-                        "})()")
+                view?.loadUrl(
+                    "javascript:(function() { " +
+                            "document.body.style.zoom = 1;" +
+                            "})()"
+                )
                 // Page loading is completed here, we can perform further actions if needed
                 progressBar.visibility = View.GONE
             }

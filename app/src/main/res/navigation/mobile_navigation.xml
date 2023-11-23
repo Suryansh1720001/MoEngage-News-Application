@@ -6,7 +6,6 @@
     app:startDestination="@+id/navigation_breaking_news">
 
 
-
     <fragment
         android:id="@+id/navigation_breaking_news"
         android:name="com.MoEngage.news.ui.activities.BreakingNews"

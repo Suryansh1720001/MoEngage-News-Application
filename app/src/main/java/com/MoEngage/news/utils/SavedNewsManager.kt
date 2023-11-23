@@ -12,7 +12,8 @@ object SavedNewsManager {
     private const val KEY_SAVED_ARTICLES = "saved_articles"
 
     fun saveArticle(context: Context, article: Article) {
-        val sharedPreferences = context.getSharedPreferences(SHARED_PREFS_NAME, Context.MODE_PRIVATE)
+        val sharedPreferences =
+            context.getSharedPreferences(SHARED_PREFS_NAME, Context.MODE_PRIVATE)
         val savedArticles = getSavedArticles(context).toMutableList()
 
         if (!savedArticles.contains(article)) {
@@ -40,7 +41,8 @@ object SavedNewsManager {
     }
 
     fun getSavedArticles(context: Context): List<Article> {
-        val sharedPreferences = context.getSharedPreferences(SHARED_PREFS_NAME, Context.MODE_PRIVATE)
+        val sharedPreferences =
+            context.getSharedPreferences(SHARED_PREFS_NAME, Context.MODE_PRIVATE)
         val savedArticles = mutableListOf<Article>()
         val jsonString = sharedPreferences.getString(KEY_SAVED_ARTICLES, null)
 
@@ -60,7 +62,16 @@ object SavedNewsManager {
                     val content = jsonObject.getString("content")
 
                     val source = Source(sourceId, sourceName)
-                    val article = Article(source, author, title, description, url, imageUrl, publishedAt, content)
+                    val article = Article(
+                        source,
+                        author,
+                        title,
+                        description,
+                        url,
+                        imageUrl,
+                        publishedAt,
+                        content
+                    )
                     savedArticles.add(article)
                 }
             } catch (e: JSONException) {
@@ -73,7 +84,8 @@ object SavedNewsManager {
 
 
     fun unsaveArticle(context: Context, article: Article) {
-        val sharedPreferences = context.getSharedPreferences(SHARED_PREFS_NAME, Context.MODE_PRIVATE)
+        val sharedPreferences =
+            context.getSharedPreferences(SHARED_PREFS_NAME, Context.MODE_PRIVATE)
         val savedArticles = getSavedArticles(context).toMutableList()
 
         val iterator = savedArticles.iterator()
@@ -115,9 +127,6 @@ object SavedNewsManager {
         val savedArticles = getSavedArticles(context)
         return savedArticles.isEmpty()
     }
-
-
-
 
 
 }

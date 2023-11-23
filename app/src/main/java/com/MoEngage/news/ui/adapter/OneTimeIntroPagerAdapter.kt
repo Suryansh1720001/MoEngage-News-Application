@@ -10,9 +10,9 @@ import com.MoEngage.news.R
 import com.MoEngage.news.ui.activities.firstscreen.OneTimeIntroActivity
 
 
-class OneTimeIntroPagerAdapter(private val context: OneTimeIntroActivity,
-                               )
-    : PagerAdapter() {
+class OneTimeIntroPagerAdapter(
+    private val context: OneTimeIntroActivity,
+) : PagerAdapter() {
 
     private val viewReferences: MutableList<View> = mutableListOf()
     private var listener: ViewPagerAdapterListener? = null
@@ -28,21 +28,21 @@ class OneTimeIntroPagerAdapter(private val context: OneTimeIntroActivity,
         R.drawable.image_2,
         R.drawable.image_3,
 
-    )
+        )
 
     private val headings = intArrayOf(
         R.string.about_us,
         R.string.our_mission,
         R.string.our_vision,
 
-    )
+        )
 
     private val descriptions = intArrayOf(
         R.string.desc_1_for_onetimeAcitivity,
         R.string.desc_2_for_onetimeActivity,
         R.string.desc_3_for_onetimeActivity,
 
-    )
+        )
 
     override fun getCount(): Int {
         return headings.size
@@ -57,10 +57,13 @@ class OneTimeIntroPagerAdapter(private val context: OneTimeIntroActivity,
     override fun instantiateItem(container: ViewGroup, position: Int): Any {
 
 
-
-        val layoutInflater = context.getSystemService(Context.LAYOUT_INFLATER_SERVICE) as LayoutInflater
-        val view = layoutInflater.inflate(R.layout.slider_layout_for_one_time_intro_activity, container, false)
-
+        val layoutInflater =
+            context.getSystemService(Context.LAYOUT_INFLATER_SERVICE) as LayoutInflater
+        val view = layoutInflater.inflate(
+            R.layout.slider_layout_for_one_time_intro_activity,
+            container,
+            false
+        )
 
 
         val slideTitleImage = view.findViewById<ImageView>(R.id.titleImage)
@@ -74,13 +77,13 @@ class OneTimeIntroPagerAdapter(private val context: OneTimeIntroActivity,
 
         val progressBar = view.findViewById<ProgressBar>(R.id.progressBar)
 
-        progressBar.progress =position+1
+        progressBar.progress = position + 1
 
-        if(position==2){
-           ready.setImageResource(R.drawable.ready_imaage)
+        if (position == 2) {
+            ready.setImageResource(R.drawable.ready_imaage)
             progressBar.visibility = View.INVISIBLE;
         }
-            slideTitleImage.setImageResource(images[position])
+        slideTitleImage.setImageResource(images[position])
 
         next.setOnClickListener {
             listener?.onReadyButtonClick()

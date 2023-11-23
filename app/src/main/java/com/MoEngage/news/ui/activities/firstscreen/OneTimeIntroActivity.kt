@@ -15,7 +15,8 @@ import com.MoEngage.news.ui.activities.HomeActivity
 import com.MoEngage.news.ui.adapter.OneTimeIntroPagerAdapter
 
 
-class OneTimeIntroActivity : AppCompatActivity(), OneTimeIntroPagerAdapter.ViewPagerAdapterListener{
+class OneTimeIntroActivity : AppCompatActivity(),
+    OneTimeIntroPagerAdapter.ViewPagerAdapterListener {
 
 
     private lateinit var mSlideViewPager: ViewPager

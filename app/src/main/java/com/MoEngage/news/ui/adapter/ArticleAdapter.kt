@@ -52,7 +52,7 @@ class ArticleAdapter(
 
         holder.bind(article, onArticleClickListener)
         holder.itemView.setOnClickListener {
-            Log.d("URL BODY","${article.url}")
+            Log.d("URL BODY", "${article.url}")
             val intent = Intent(context, ArticleDetailActivity::class.java)
             intent.putExtra("ARTICLE_URL", article.url) // Pass the URL
             intent.putExtra("ARTICLE_IMAGE", article.imageUrl) // Pass the URL
@@ -84,15 +84,14 @@ class ArticleAdapter(
 
 
             headlineTextView.text = article.title ?: context.getString(R.string.title_placeholder)
-            sourceTextView.text = article.source.name ?: context.getString(R.string.source_placeholder)
+            sourceTextView.text =
+                article.source.name ?: context.getString(R.string.source_placeholder)
             dateTextView.text = formatDate(article.publishedAt)
             description.text = article.description ?: "Description"
 
 
-
             val progressBar: ProgressBar = itemView.findViewById(R.id.Image_progress_bar)
             progressBar.visibility = View.VISIBLE // Show progress bar
-
 
 
             article.imageUrl?.let {

@@ -40,8 +40,8 @@ class HomeActivity : AppCompatActivity() {
     private lateinit var recyclerView: RecyclerView
     private lateinit var articleAdapter: ArticleAdapter
     private var articleList = mutableListOf<Article>()
-    private lateinit var popup : ImageView
-    private lateinit var progress_bar : ProgressBar
+    private lateinit var popup: ImageView
+    private lateinit var progress_bar: ProgressBar
     private var isLoading = false
     private var currentPage = 1
     private val PAGE_SIZE = 10
@@ -56,112 +56,15 @@ class HomeActivity : AppCompatActivity() {
         setContentView(binding.root)
 
 
-//        recyclerView = findViewById(R.id.recyclerView)
-//        setupRecyclerView()
-//        fetchArticles()
-//        FirebaseApp.initializeApp(this)
-
-//        popup = findViewById(R.id.menu)
-//
-//        popup.setOnClickListener {
-//            popup()
-//        }
-
-
-
         val navView: BottomNavigationView = binding.navView
 
         val navController = findNavController(R.id.nav_host_fragment_activity_main)
-        // Passing each menu ID as a set of Ids because each
-        // menu should be considered as top level destinations.
-//        val appBarConfiguration = AppBarConfiguration(
-//            setOf(
-//                R.id.navigation_home, R.id.navigation_dashboard, R.id.navigation_notifications
-//            )
-//        )
-//        setupActionBarWithNavController(navController, appBarConfiguration)
-
 
 
         navView.setupWithNavController(navController)
 
-//        progress_bar = findViewById(R.id.main_progress_bar)
-//        progress_bar.visibility = View.VISIBLE
-
     }
 
-//    private fun setupRecyclerView() {
-//        articleAdapter = ArticleAdapter(this, articleList, object : ArticleAdapter.OnArticleClickListener {
-//            override fun onArticleClick(article: Article) {
-//                // Handle article click here
-//            }
-//        })
-//        recyclerView.layoutManager = LinearLayoutManager(this)
-//        recyclerView.adapter = articleAdapter
-//
-//    }
-//
-//    private fun fetchArticles() {
-//        val apiUrl = "https://candidate-test-data-moengage.s3.amazonaws.com/Android/news-api-feed/staticResponse.json"
-//
-//        GlobalScope.launch(Dispatchers.IO) {
-//            try {
-//                val response = URL(apiUrl).readText()
-//                val articles = parseArticles(response)
-//                Log.d("BODY","$response")
-//                withContext(Dispatchers.Main) {
-//                    articleList.clear()
-//                    articleList.addAll(articles)
-//                    articleAdapter.notifyDataSetChanged()
-//                    progress_bar.visibility = View.GONE
-//                }
-//            } catch (e: Exception) {
-//                Log.d("BODY","ERRORIN FETCH")
-//                progress_bar.visibility = View.GONE
-//            }
-//        }
-//    }
-//
-//
-//    private fun parseArticles(response: String): List<Article> {
-//            val articles = mutableListOf<Article>()
-//            try {
-//                val jsonResponse = JSONObject(response)
-//                val jsonArticles = jsonResponse.optJSONArray("articles")
-//
-//                jsonArticles?.let {
-//                    for (i in 0 until it.length()) {
-//                        val jsonArticle = it.getJSONObject(i)
-//                        val sourceJson = jsonArticle.optJSONObject("source")
-//                        val source = Source(sourceJson?.optString("id"), sourceJson?.optString("name"))
-//
-//                        val article = Article(
-//                            source,
-//                            jsonArticle.optString("author"),
-//                            jsonArticle.optString("title"),
-//                            jsonArticle.optString("description"),
-//                            jsonArticle.optString("url"),
-//                            jsonArticle.optString("urlToImage"),
-//                            jsonArticle.optString("publishedAt"),
-//                            jsonArticle.optString("content")
-//                        )
-//                        articles.add(article)
-//
-//
-//                }
-//                }
-//
-//            } catch (e: JSONException) {
-//                Log.e("PARSE_ERROR", "JSONException: ${e.message}", e)
-//            } catch (e: Exception) {
-//                Log.e("PARSE_ERROR", "Exception occurred while parsing JSON: ${e.message}", e)
-//            }
-//
-//
-//            return articles
-//        }
-//
-//
     fun sortByDate(ascending: Boolean) {
         val dateFormat = SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss'Z'", Locale.getDefault())
 
@@ -184,11 +87,5 @@ class HomeActivity : AppCompatActivity() {
         }
         articleAdapter.notifyDataSetChanged()
     }
-
-
-
-
-
-
 
 }
