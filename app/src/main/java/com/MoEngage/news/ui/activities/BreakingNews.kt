@@ -102,6 +102,9 @@ class BreakingNews : Fragment() {
         }
     }
 
+
+
+
     private fun parseArticles(response: String): List<Article> {
         val articles = mutableListOf<Article>()
         try {
