@@ -17,10 +17,14 @@ class WebViewActivity : AppCompatActivity() {
         setContentView(R.layout.activity_web_view)
 
         val articleUrl = intent.getStringExtra("ARTICLE_URL")
+        val articleSource = intent.getStringExtra("ARTICLE_SOURCE")
         val correctedUrl = articleUrl?.replace("http:", "https:") ?: "https://www.example.com"
 
         val progressBar = findViewById<ProgressBar>(R.id.progress_bar)
 
+        if(articleSource=="TechCrunch"){
+            Toast.makeText(this@WebViewActivity,"There is problem with TechCrunch Source URLs with android-Webview. Pls open the other source URLs",Toast.LENGTH_LONG).show()
+        }
 
         val webView = findViewById<WebView>(R.id.webView)
         webView.settings.javaScriptEnabled = true

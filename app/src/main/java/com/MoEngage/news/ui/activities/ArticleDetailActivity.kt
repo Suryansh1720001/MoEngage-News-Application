@@ -181,6 +181,7 @@ class ArticleDetailActivity : AppCompatActivity() {
             com.MoEngage.news.ui.activities.WebViewActivity::class.java
         )
         intent.putExtra("ARTICLE_URL", articleURL)
+        intent.putExtra("ARTICLE_SOURCE", source)
         startActivity(intent)
         overridePendingTransition(R.drawable.slide_in_up, R.drawable.slide_out_up)
     }
