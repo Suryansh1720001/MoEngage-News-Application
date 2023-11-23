@@ -1,4 +1,4 @@
-# MoEngage-News-Application
+# 📱MoEngage-News-Application
 
 
 # 📜App Description
@@ -33,9 +33,7 @@ These functionalities collectively create a comprehensive news browsing experien
 ||||
 |:----------------------------------------:|:-----------------------------------------:|:-----------------------------------------:|
 | <img src= "https://github.com/Suryansh1720001/MoEngage-News-Application/assets/85965606/f3c6fcd6-9c27-433d-b4ea-4a506d6dc2a8" width="80%" height="70%"> | <img src= "https://github.com/Suryansh1720001/MoEngage-News-Application/assets/85965606/ecb4a4a5-ec9b-4d68-9f32-a5d2cc2c5e9d" width="80%" height="70%"> | <img src= "https://github.com/Suryansh1720001/MoEngage-News-Application/assets/85965606/21ed9eed-84aa-45c8-8cc3-abc101c23df1" width="80%" height="70%"> |
-| <img src= "https://github.com/Suryansh1720001/MoEngage-News-Application/assets/85965606/293fc64e-3a36-4dd6-a7be-92f938f3fbfa" width="80%" height="70%"> |  <img src= "https://github.com/Suryansh1720001/MoEngage-News-Application/assets/85965606/87aadcfa-2ac0-4118-8c12-2c248e08f35b" width="80%" height="70%">   | <img src= "https://github.com/Suryansh1720001/MoEngage-News-Application/assets/85965606/0a4842d9-11ef-4e44-aaba-17c103b80a35" width="80%" height="70%">  |  
-| <img src= "https://github.com/Suryansh1720001/MoEngage-News-Application/assets/85965606/4975cdc4-0449-49d7-9216-98aee80f8796" width="80%" height="70%"> | <img src= "https://github.com/Suryansh1720001/MoEngage-News-Application/assets/85965606/33bb8f67-993d-47e9-8fc1-c40f3d8ba85e" width="80%" height="70%">|  |
-
-
+|  <img src= "https://github.com/Suryansh1720001/MoEngage-News-Application/assets/85965606/690e340e-e519-4be3-8903-b2dc962fa812" width="80%" height="70%"> | <img src= "https://github.com/Suryansh1720001/MoEngage-News-Application/assets/85965606/293fc64e-3a36-4dd6-a7be-92f938f3fbfa" width="80%" height="70%"> |  <img src= "https://github.com/Suryansh1720001/MoEngage-News-Application/assets/85965606/87aadcfa-2ac0-4118-8c12-2c248e08f35b" width="80%" height="70%"> | 
+| <img src= "https://github.com/Suryansh1720001/MoEngage-News-Application/assets/85965606/076629e6-cc06-45a4-8671-dda0bff2913d" width="80%" height="70%">  |  <img src= "https://github.com/Suryansh1720001/MoEngage-News-Application/assets/85965606/4975cdc4-0449-49d7-9216-98aee80f8796" width="80%" height="70%"> | <img src= "https://github.com/Suryansh1720001/MoEngage-News-Application/assets/85965606/33bb8f67-993d-47e9-8fc1-c40f3d8ba85e" width="80%" height="70%"> |  
 
 
