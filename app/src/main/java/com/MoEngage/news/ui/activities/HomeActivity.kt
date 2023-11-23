@@ -61,11 +61,11 @@ class HomeActivity : AppCompatActivity() {
 //        fetchArticles()
 //        FirebaseApp.initializeApp(this)
 
-        popup = findViewById(R.id.menu)
-
-        popup.setOnClickListener {
-            popup()
-        }
+//        popup = findViewById(R.id.menu)
+//
+//        popup.setOnClickListener {
+//            popup()
+//        }
 
 
 
@@ -187,43 +187,7 @@ class HomeActivity : AppCompatActivity() {
 
 
 
-    private fun popup() {
-        val popupMenu = PopupMenu(this, popup)
-        popupMenu.inflate(R.menu.menu)
 
-        popupMenu.setOnMenuItemClickListener { item ->
-            when (item.itemId) {
-
-                R.id.latest -> {
-                    sortByDate(false)
-                    true
-                }
-                R.id.oldest -> {
-                    sortByDate(true)
-                    true
-                }
-
-
-                else -> super.onOptionsItemSelected(item)
-            }
-
-
-        }
-
-        try {
-            val fieldMPopup = PopupMenu::class.java.getDeclaredField("mPopup")
-            fieldMPopup.isAccessible = true
-            val mPopup = fieldMPopup.get(popupMenu)
-            mPopup.javaClass.getDeclaredMethod("setForceShowIcon", Boolean::class.java)
-                .invoke(mPopup, true)
-        } catch (e: Exception) {
-            Log.e("Main", "Error showing menu icons.", e)
-        } finally {
-            popupMenu.show()
-        }
-
-
-    }
 
 
 

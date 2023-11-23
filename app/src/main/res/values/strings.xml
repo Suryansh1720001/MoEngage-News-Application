@@ -1,9 +1,15 @@
 <resources>
-    <string name="app_name">News</string>
+    <string name="app_name">MoEngage NewsLink</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="title_placeholder">Title\n</string>
     <string name="source_placeholder">Source Name</string>
     <string name="breaking_news"><font color="#FFFFFF">Breaking News</font></string>
     <string name="saved_news"><font color="#FFFFFF">Saved News</font></string>
+    <string name="desc_1_for_onetimeAcitivity">At MoEngage NewsLinker, we\'re committed to revolutionizing how you engage with news. Our platform seamlessly connects users to curated articles, fostering informed and effortless browsing.</string>
+    <string name="desc_2_for_onetimeActivity">Our mission is to deliver a user-centric news experience by offering dynamic article curation and a visually interactive interface, ensuring everyone stays informed with ease.</string>
+    <string name="desc_3_for_onetimeActivity">We envision a future where accessing and engaging with news is intuitive and enjoyable, empowering users to navigate the world of information effortlessly.</string>
+    <string name="about_us">About Us\n</string>
+    <string name="our_mission">Our Mission</string>
+    <string name="our_vision">Our Vision</string>
 </resources>

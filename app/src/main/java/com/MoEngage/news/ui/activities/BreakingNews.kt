@@ -1,13 +1,16 @@
 package com.MoEngage.news.ui.activities
 
 import android.annotation.SuppressLint
+import android.app.Dialog
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
+import android.widget.PopupMenu
 import android.widget.ProgressBar
+import androidx.cardview.widget.CardView
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -22,6 +25,7 @@ import kotlinx.coroutines.withContext
 import org.json.JSONException
 import org.json.JSONObject
 import java.net.URL
+import java.text.SimpleDateFormat
 import java.util.*
 
 class BreakingNews : Fragment() {
@@ -29,7 +33,7 @@ class BreakingNews : Fragment() {
     private lateinit var recyclerView: RecyclerView
     private lateinit var articleAdapter: ArticleAdapter
     private var articleList = mutableListOf<Article>()
-    private lateinit var popup: ImageView
+    private lateinit var popup: CardView
     private lateinit var progress_bar: ProgressBar
     private var isLoading = false
     private var currentPage = 1
@@ -47,13 +51,13 @@ class BreakingNews : Fragment() {
         setupRecyclerView(view)
         fetchArticles()
         progress_bar = view.findViewById(R.id.main_progress_bar)
-//        progress_bar.visibility = View.VISIBLE
+        progress_bar.visibility = View.VISIBLE
 
-//        popup = view.findViewById(R.id.menu)
-//
-//        popup.setOnClickListener {
-//            showPopupMenu()
-//        }
+        popup = view.findViewById(R.id.cv_filter)
+
+        popup.setOnClickListener {
+           showCustomDialog()
+        }
 
 
 
@@ -127,57 +131,49 @@ class BreakingNews : Fragment() {
         return articles
     }
 
-//    private fun sortByDate(ascending: Boolean) {
-//        val dateFormat = SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss'Z'", Locale.getDefault())
-//
-//        if (ascending) {
-//            articleList.sortWith(compareBy {
-//                try {
-//                    dateFormat.parse(it.publishedAt ?: "")
-//                } catch (e: Exception) {
-//                    Date(0)
-//                }
-//            })
-//        } else {
-//            articleList.sortWith(compareByDescending {
-//                try {
-//                    dateFormat.parse(it.publishedAt ?: "")
-//                } catch (e: Exception) {
-//                    Date(0)
-//                }
-//            })
-//        }
-//        articleAdapter.notifyDataSetChanged()
-//    }
-//
-//    private fun showPopupMenu() {
-//        val popupMenu = PopupMenu(requireContext(), popup)
-//        popupMenu.inflate(R.menu.menu)
-//
-//        popupMenu.setOnMenuItemClickListener { item ->
-//            when (item.itemId) {
-//                R.id.latest -> {
-//                    sortByDate(false)
-//                    true
-//                }
-//                R.id.oldest -> {
-//                    sortByDate(true)
-//                    true
-//                }
-//                else -> false
-//            }
-//        }
-//
-//        try {
-//            val fieldMPopup = PopupMenu::class.java.getDeclaredField("mPopup")
-//            fieldMPopup.isAccessible = true
-//            val mPopup = fieldMPopup.get(popupMenu)
-//            mPopup.javaClass.getDeclaredMethod("setForceShowIcon", Boolean::class.java)
-//                .invoke(mPopup, true)
-//        } catch (e: Exception) {
-//            Log.e("Main", "Error showing menu icons.", e)
-//        } finally {
-//            popupMenu.show()
-//        }
-//    }
+    private fun sortByDate(ascending: Boolean) {
+        val dateFormat = SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss'Z'", Locale.getDefault())
+
+        if (ascending) {
+            articleList.sortWith(compareBy {
+                try {
+                    dateFormat.parse(it.publishedAt ?: "")
+                } catch (e: Exception) {
+                    Date(0)
+                }
+            })
+        } else {
+            articleList.sortWith(compareByDescending {
+                try {
+                    dateFormat.parse(it.publishedAt ?: "")
+                } catch (e: Exception) {
+                    Date(0)
+                }
+            })
+        }
+        articleAdapter.notifyDataSetChanged()
+    }
+
+
+
+    private fun showCustomDialog() {
+        val dialog = Dialog(requireContext())
+        dialog.setContentView(R.layout.dialog_box_filter)
+        // Set up your dialog content and functionality here
+
+        // Example: Dismiss the dialog when a button is clicked
+        val cv_latest = dialog.findViewById<CardView>(R.id.cv_latest)
+        val cv_oldest = dialog.findViewById<CardView>(R.id.cv_older)
+        cv_latest.setOnClickListener {
+            sortByDate(false)
+            dialog.dismiss()
+        }
+        cv_oldest.setOnClickListener {
+            sortByDate(true)
+            dialog.dismiss()
+        }
+
+        dialog.show()
+    }
+
 }
