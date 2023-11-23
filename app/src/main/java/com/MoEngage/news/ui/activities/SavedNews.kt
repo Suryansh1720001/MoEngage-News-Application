@@ -66,7 +66,9 @@
 
 
     import android.app.Activity
-//    import android.content.Intent
+    import android.util.Log
+
+    //    import android.content.Intent
 //    import android.os.Bundle
 //    import android.view.LayoutInflater
 //    import android.view.View
@@ -177,7 +179,9 @@
         }
 
         override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+
             super.onActivityResult(requestCode, resultCode, data)
+            Log.d("this","thishj")
             if (requestCode == REQUEST_CODE_REFRESH && resultCode == Activity.RESULT_OK) {
                 refreshSavedNews()
             }

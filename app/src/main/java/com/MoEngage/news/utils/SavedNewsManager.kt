@@ -14,26 +14,29 @@ object SavedNewsManager {
     fun saveArticle(context: Context, article: Article) {
         val sharedPreferences = context.getSharedPreferences(SHARED_PREFS_NAME, Context.MODE_PRIVATE)
         val savedArticles = getSavedArticles(context).toMutableList()
-        savedArticles.add(article)
 
-        val editor = sharedPreferences.edit()
-        val jsonArray = JSONArray()
-        for (i in savedArticles.indices) {
-            val jsonObject = JSONObject()
-            val currentArticle = savedArticles[i]
-            jsonObject.put("source_id", currentArticle.source.id)
-            jsonObject.put("source_name", currentArticle.source.name)
-            jsonObject.put("author", currentArticle.author)
-            jsonObject.put("title", currentArticle.title)
-            jsonObject.put("description", currentArticle.description)
-            jsonObject.put("url", currentArticle.url)
-            jsonObject.put("imageUrl", currentArticle.imageUrl)
-            jsonObject.put("publishedAt", currentArticle.publishedAt)
-            jsonObject.put("content", currentArticle.content)
-            jsonArray.put(jsonObject)
+        if (!savedArticles.contains(article)) {
+            savedArticles.add(article)
+
+            val editor = sharedPreferences.edit()
+            val jsonArray = JSONArray()
+            for (i in savedArticles.indices) {
+                val jsonObject = JSONObject()
+                val currentArticle = savedArticles[i]
+                jsonObject.put("source_id", currentArticle.source.id)
+                jsonObject.put("source_name", currentArticle.source.name)
+                jsonObject.put("author", currentArticle.author)
+                jsonObject.put("title", currentArticle.title)
+                jsonObject.put("description", currentArticle.description)
+                jsonObject.put("url", currentArticle.url)
+                jsonObject.put("imageUrl", currentArticle.imageUrl)
+                jsonObject.put("publishedAt", currentArticle.publishedAt)
+                jsonObject.put("content", currentArticle.content)
+                jsonArray.put(jsonObject)
+            }
+            editor.putString(KEY_SAVED_ARTICLES, jsonArray.toString())
+            editor.apply()
         }
-        editor.putString(KEY_SAVED_ARTICLES, jsonArray.toString())
-        editor.apply()
     }
 
     fun getSavedArticles(context: Context): List<Article> {
@@ -101,4 +104,12 @@ object SavedNewsManager {
         editor.putString(KEY_SAVED_ARTICLES, jsonArray.toString())
         editor.apply()
     }
+
+    fun isArticleSaved(context: Context, article: Article): Boolean {
+        val savedArticles = getSavedArticles(context)
+        return savedArticles.contains(article)
+    }
+
+
+
 }

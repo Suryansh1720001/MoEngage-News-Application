@@ -134,25 +134,15 @@
         />
 
 
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="saved"
-        android:id="@+id/saved"
-        app:layout_constraintTop_toBottomOf="@id/tv_content"
-        app:layout_constraintStart_toStartOf="parent"
+    <ImageView
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:id="@+id/isSaved"
+        android:src="@drawable/unheart"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        />
-
-
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="remove"
-        android:id="@+id/remove"
-        app:layout_constraintTop_toBottomOf="@id/saved"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
+       android:layout_marginEnd="20dp"
+        android:layout_marginBottom="20dp"
         />
 
 

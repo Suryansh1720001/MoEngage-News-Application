@@ -35,7 +35,6 @@ class ArticleDetailActivity : AppCompatActivity() {
     private lateinit var article : Article
 
 
-    @SuppressLint("MissingInflatedId")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_article_detail)
@@ -64,22 +63,34 @@ class ArticleDetailActivity : AppCompatActivity() {
         source_text.text = "Source: $source"
 
         val progressBar = findViewById<ProgressBar>(R.id.progress_bar)
+        val button = findViewById<ImageView>(R.id.isSaved)
+        val article = createArticleObject()
+
+        // Set the appropriate image based on the article's save status
+        if (SavedNewsManager.isArticleSaved(this,article)) {
+            // Load the saved icon image
+            button.setImageResource(R.drawable.heart)
+        } else {
+            // Load the unsaved icon image
+            button.setImageResource(R.drawable.unheart)
+        }
 
 
 
-        val button = findViewById<Button>(R.id.saved)
         button.setOnClickListener {
 //            saved the news
             val article = createArticleObject()
-            SavedNewsManager.saveArticle(this, article)
+            if(SavedNewsManager.isArticleSaved(this,article)) {
+                SavedNewsManager.unsaveArticle(this, article)
+                button.setImageResource(R.drawable.unheart)
+            }else{
+
+                SavedNewsManager.saveArticle(this, article)
+                button.setImageResource(R.drawable.heart)
+            }
         }
 
-        val remove = findViewById<Button>(R.id.remove)
-        remove.setOnClickListener {
-//            saved the news
-            val article = createArticleObject()
-            SavedNewsManager.unsaveArticle(this, article)
-        }
+
 
 
        image_url?.let {
