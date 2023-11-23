@@ -19,8 +19,8 @@ News is a cutting-edge Android application designed to bring you curated, outlin
 - **Performance Optimization**: Ensured optimized performance for faster loading times and smooth navigation.
 - **User-Focused Improvements**: Kept the application open for future user-requested enhancements.
 - **Added Other Features**:
-  1. Introducing the capability to add your favorite news articles or save them for future reference in a separate window.
-  2. Introduced the one-time screen displaying information about our company, including our About Us section, mission, and vision.
+  1. **Save Favourite News**: Introducing the capability to add your favourite news articles or save them for future reference in a separate window.
+  2. **One Time Intro Activity**: Introduced the one-time screen displaying information about our company, including our About Us section, mission, and vision.
 
 These functionalities collectively create a comprehensive news browsing experience for users, allowing them to access, sort, and engage with articles seamlessly while enjoying an aesthetically pleasing interface.
 
