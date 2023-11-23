@@ -23,7 +23,7 @@ class WebViewActivity : AppCompatActivity() {
         val progressBar = findViewById<ProgressBar>(R.id.progress_bar)
 
         if(articleSource=="TechCrunch"){
-            Toast.makeText(this@WebViewActivity,"There is problem with TechCrunch Source URLs with android-Webview. Pls open the other source URLs",Toast.LENGTH_LONG).show()
+            Toast.makeText(this@WebViewActivity,"There is problem with TechCrunch Source URLs. Pls open the other source URLs",Toast.LENGTH_LONG).show()
         }
 
         val webView = findViewById<WebView>(R.id.webView)
