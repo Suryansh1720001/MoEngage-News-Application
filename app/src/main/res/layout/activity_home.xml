@@ -33,7 +33,7 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center_vertical"
             android:fontFamily="sans-serif-medium"
-            android:text="News"
+            android:text="@string/app_name"
             android:textColor="@android:color/white"
             android:textSize="24sp"
             tools:layout_editor_absoluteX="76dp"

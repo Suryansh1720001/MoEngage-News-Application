@@ -111,5 +111,13 @@ object SavedNewsManager {
     }
 
 
+    fun isEmpty(context: Context): Boolean {
+        val savedArticles = getSavedArticles(context)
+        return savedArticles.isEmpty()
+    }
+
+
+
+
 
 }

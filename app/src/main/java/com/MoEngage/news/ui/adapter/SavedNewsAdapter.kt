@@ -27,137 +27,6 @@ import java.text.ParseException
 import java.text.SimpleDateFormat
 import java.util.Locale
 
-//class SavedNewsAdapter(private val articles: List<Article>) : RecyclerView.Adapter<SavedNewsAdapter.ViewHolder>() {
-//
-//    inner class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-//        // Initialize views from saved_news_item.xml
-//        val titleTextView: TextView = itemView.findViewById(R.id.titleTextView)
-//        val descriptionTextView: TextView = itemView.findViewById(R.id.descriptionTextView)
-//        // Add other views as needed
-//    }
-//
-//    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
-//        val view = LayoutInflater.from(parent.context).inflate(R.layout.item_article, parent, false)
-//        return ViewHolder(view)
-//    }
-//
-//    override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-//        val article = articles[position]
-//        // Set data to views in the ViewHolder
-//        holder.titleTextView.text = article.title
-//        holder.descriptionTextView.text = article.description
-//        // Set other data to respective views
-//
-//        holder.bind(article, onArticleClickListener)
-//        holder.itemView.setOnClickListener {
-//            Log.d("URL BODY","${article.url}")
-//            val intent = Intent(context, ArticleDetailActivity::class.java)
-//            intent.putExtra("ARTICLE_URL", article.url) // Pass the URL
-//            intent.putExtra("ARTICLE_IMAGE", article.imageUrl) // Pass the URL
-//            intent.putExtra("ARTICLE_CONTENT", article.content)
-//            intent.putExtra("ARTICLE_AUTHOR", article.author)
-//            intent.putExtra("ARTICLE_TITLE", article.title)
-//            intent.putExtra("ARTICLE_SOURCE", article.source.name)
-//
-//            intent.putExtra("ARTICLE_DATA", article) // Pass the whole Article object
-//
-//            context.startActivity(intent)
-//        }
-//    }
-//
-//    override fun getItemCount(): Int {
-//        Log.d("ARTICLE_BODY","${articles.size}")
-//        return articles.size
-//
-//    }
-//
-//
-//    inner class SavedNewsViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-//
-//        private val headlineTextView: TextView = itemView.findViewById(R.id.titleTextView)
-//        private val sourceTextView: TextView = itemView.findViewById(R.id.sourceTextView)
-//        private val dateTextView: TextView = itemView.findViewById(R.id.tv_time)
-//        private val description: TextView = itemView.findViewById(R.id.descriptionTextView)
-//        private val articleImageView: ImageView = itemView.findViewById(R.id.articleImageView)
-//
-//        fun bind(article: Article, clickListener: ArticleAdapter.OnArticleClickListener) {
-//
-//
-//            headlineTextView.text = article.title ?: context.getString(R.string.title_placeholder)
-//            sourceTextView.text = article.source.name ?: context.getString(R.string.source_placeholder)
-//            dateTextView.text = formatDate(article.publishedAt)
-//            description.text = article.description ?: "Description"
-//
-//
-//
-//            val progressBar: ProgressBar = itemView.findViewById(R.id.Image_progress_bar)
-//            progressBar.visibility = View.VISIBLE // Show progress bar
-//
-//
-//
-//            article.imageUrl?.let {
-//                Glide.with(context)
-//                    .load(it)
-//                    .apply(
-//                        RequestOptions()
-//                            .error(R.drawable.breaking_news)
-//                    )
-//                    .listener(object : RequestListener<Drawable> {
-//                        override fun onLoadFailed(
-//                            e: GlideException?,
-//                            model: Any?,
-//                            target: Target<Drawable>,
-//                            isFirstResource: Boolean
-//                        ): Boolean {
-//                            progressBar.visibility = View.GONE // Hide progress bar on failure
-//                            return false // Return false to allow Glide to handle the failure event
-//                        }
-//
-//                        override fun onResourceReady(
-//                            resource: Drawable,
-//                            model: Any,
-//                            target: Target<Drawable>?,
-//                            dataSource: com.bumptech.glide.load.DataSource,
-//                            isFirstResource: Boolean
-//                        ): Boolean {
-//
-//                            progressBar.visibility = View.GONE // Hide progress bar on success
-//                            return false
-//                        }
-//
-//                    })
-//                    .transition(DrawableTransitionOptions.withCrossFade())
-//                    .into(articleImageView)
-//            } ?: run {
-//                articleImageView.setImageResource(R.drawable.breaking_news)
-//                progressBar.visibility = View.GONE
-//            }
-//
-//
-//
-//
-//
-//            itemView.setOnClickListener {
-//                clickListener.onArticleClick(article)
-//            }
-//
-//
-//        }
-//
-//        private fun formatDate(dateString: String?): String {
-//            val inputFormat = SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss'Z'", Locale.getDefault())
-//            val outputFormat = SimpleDateFormat("dd MMM yyyy\nHH:mm:ss", Locale.getDefault())
-//            val date = dateString?.let {
-//                inputFormat.parse(it)
-//            }
-//            return date?.let {
-//                outputFormat.format(date)
-//            } ?: ""
-//        }
-//    }
-//}
-
-
 
 
 class SavedNewsAdapter(private val articles: List<Article>, private val context: Context,
@@ -226,21 +95,6 @@ class SavedNewsAdapter(private val articles: List<Article>, private val context:
             // Handle click event if needed
             clickListener.onArticleClick(article)
         }
-//
-//        holder.itemView.setOnClickListener {
-//            Log.d("URL BODY","${article.url}")
-//            val intent = Intent(context, ArticleDetailActivity::class.java)
-//            intent.putExtra("ARTICLE_URL", article.url) // Pass the URL
-//            intent.putExtra("ARTICLE_IMAGE", article.imageUrl) // Pass the URL
-//            intent.putExtra("ARTICLE_CONTENT", article.content)
-//            intent.putExtra("ARTICLE_AUTHOR", article.author)
-//            intent.putExtra("ARTICLE_TITLE", article.title)
-//            intent.putExtra("ARTICLE_SOURCE", article.source.name)
-//
-//            intent.putExtra("ARTICLE_DATA", article) // Pass the whole Article object
-//
-//            context.startActivity(intent)
-//        }
 
 
     }
@@ -270,6 +124,8 @@ class SavedNewsAdapter(private val articles: List<Article>, private val context:
     interface OnArticleClickListener {
         fun onArticleClick(article: Article)
     }
+
+
 
 
 }
