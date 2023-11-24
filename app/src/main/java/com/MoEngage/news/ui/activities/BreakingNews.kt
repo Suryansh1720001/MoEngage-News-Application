@@ -20,6 +20,7 @@ import com.MoEngage.news.R
 import com.MoEngage.news.model.Article
 import com.MoEngage.news.model.Source
 import com.MoEngage.news.ui.adapter.ArticleAdapter
+import com.MoEngage.news.utils.Constant
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
@@ -82,8 +83,7 @@ class BreakingNews : Fragment() {
 
 
     private fun fetchArticles() {
-        val apiUrl =
-            "https://candidate-test-data-moengage.s3.amazonaws.com/Android/news-api-feed/staticResponse.json"
+        val apiUrl = Constant.API
 
         lifecycleScope.launch(Dispatchers.IO) {
             try {

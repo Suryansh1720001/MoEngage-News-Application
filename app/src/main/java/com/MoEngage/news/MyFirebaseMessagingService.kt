@@ -32,7 +32,6 @@ class MyFirebaseMessagingService : FirebaseMessagingService() {
             }
             Log.d("FCM", "Title: $title, Message: $message")
         }
-
     }
 
     private fun displayNotification(title: String, message: String) {

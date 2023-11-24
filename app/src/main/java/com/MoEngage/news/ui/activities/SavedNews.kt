@@ -59,9 +59,8 @@
             adapter = SavedNewsAdapter(savedArticles, requireContext(), object : SavedNewsAdapter.OnArticleClickListener {
                 override fun onArticleClick(article: Article) {
                     val intent = Intent(requireContext(), ArticleDetailActivity::class.java)
-                    // ... put extras
-                    intent.putExtra("ARTICLE_URL", article.url) // Pass the URL
-                    intent.putExtra("ARTICLE_IMAGE", article.imageUrl) // Pass the URL
+                    intent.putExtra("ARTICLE_URL", article.url)
+                    intent.putExtra("ARTICLE_IMAGE", article.imageUrl)
                     intent.putExtra("ARTICLE_CONTENT", article.content)
                     intent.putExtra("ARTICLE_AUTHOR", article.author)
                     intent.putExtra("ARTICLE_TITLE", article.title)
@@ -79,7 +78,6 @@
         override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
 
             super.onActivityResult(requestCode, resultCode, data)
-            Log.d("this","thishj")
             if (requestCode == REQUEST_CODE_REFRESH && resultCode == Activity.RESULT_OK) {
                 refreshSavedNews()
             }
