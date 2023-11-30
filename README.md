@@ -11,7 +11,6 @@ News is a cutting-edge Android application designed to bring you curated, outlin
 - **Article Display**: Showcased article headlines and URLs for easy access.
 - **Browser Integration**: Enabled opening articles within the app via an in-app browser window.
 - **Visual Design**: Utilized visually interactive design principles for a user-friendly interface.
-- **Firebase Cloud Messaging (FCM)**: Integrated FCM for receiving and displaying notifications about new articles.
 - **Custom Design Elements**: Employed custom fonts, icons, and colour schemes for an engaging user experience.
 - **Sorting Feature**: Provided the ability to sort articles based on chronological order (old-to-new, new-to-old).
 - **Error Handling**: Implemented robust exception handling for input exceptions, Unicode, and null values.
