@@ -38,22 +38,28 @@
         ): View? {
             val view = inflater.inflate(R.layout.fragment_saved_news, container, false)
 
-            val lottieani = view.findViewById<LottieAnimationView>(R.id.lottie_nothing_found)
-            val tv_nothing_found = view.findViewById<TextView>(R.id.tv_nothing_found)
+           setSavedNews(view)
+
+            return view
+        }
+
+        private fun setSavedNews(view : View?) {
+            val lottieani = view?.findViewById<LottieAnimationView>(R.id.lottie_nothing_found)
+            val tv_nothing_found = view?.findViewById<TextView>(R.id.tv_nothing_found)
 
             if (SavedNewsManager.isEmpty(requireContext())) {
-              lottieani.visibility = View.VISIBLE
-                tv_nothing_found.visibility = View.VISIBLE
+                lottieani?.visibility = View.VISIBLE
+                tv_nothing_found?.visibility = View.VISIBLE
             } else {
-                lottieani.visibility = View.GONE
-                tv_nothing_found.visibility = View.GONE
+                lottieani?.visibility = View.GONE
+                tv_nothing_found?.visibility = View.GONE
             }
 
             savedArticles = SavedNewsManager.getSavedArticles(requireContext()).toMutableList()
 
 
 
-            recyclerView = view.findViewById(R.id.saved_news_recycle_view)
+            recyclerView = view?.findViewById(R.id.saved_news_recycle_view)!!
             recyclerView.layoutManager = LinearLayoutManager(requireContext())
 
             adapter = SavedNewsAdapter(savedArticles, requireContext(), object : SavedNewsAdapter.OnArticleClickListener {
@@ -71,8 +77,6 @@
             })
 
             recyclerView.adapter = adapter
-
-            return view
         }
 
         override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
@@ -88,4 +92,11 @@
             savedArticles.addAll(SavedNewsManager.getSavedArticles(requireContext()))
             adapter.notifyDataSetChanged()
         }
+
+        override fun onResume() {
+            super.onResume()
+                view?.let { setSavedNews(it) }
+        }
+
+
     }
